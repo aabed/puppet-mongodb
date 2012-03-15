@@ -53,4 +53,13 @@ class mongodb::params {
   } elsif !$mongodb {
     $shards = false
   }
+  
+  $mongo_passwd = $mongodb_passwd ? {
+    '' 		  => 'admin',
+    default => "$mongodb_passwd",
+  }
+
+  $mongo_db_name = $mongodb_dbname ? {
+    '' 		  => 'admin',
+    default => "$mongodb_dbname",
 }
